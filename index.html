@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="PCFootprint: a large-scale dataset and benchmark for vectorized building footprint extraction from aerial LiDAR point clouds. IEEE JSTARS 2026.">
+  <meta property="og:title" content="PCFootprint | Aerial LiDAR Building Footprints">
+  <meta property="og:description" content="33,000 tiles. 227,264 buildings. A benchmark for vectorized building footprint extraction and cross-region generalization.">
+  <title>PCFootprint · IEEE JSTARS 2026</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <script src="main.js" defer></script>
+</head>
+<body>
+  <nav class="navigation" aria-label="Main navigation">
+    <a class="wordmark" href="#home"><span class="mark" aria-hidden="true">▱</span> PCFootprint</a>
+    <div><a href="#dataset">Dataset</a><a href="#benchmark">Benchmark</a><a href="#citation">Citation</a></div>
+  </nav>
+  <header id="home" class="hero">
+    <p class="venue">IEEE JSTARS <span>2026 · Volume 19</span></p>
+    <h1>PCFootprint</h1>
+    <p class="subtitle">A Large-Scale Dataset and Benchmark for<br class="desktop-break"> Vectorized Building Footprint Extraction<br class="desktop-break"> From Aerial LiDAR Point Clouds</p>
+    <p class="authors">Haoyuan Shen<sup>†</sup><span>·</span> Kuihao Wang<sup>†</sup><span>·</span> <a href="https://ruishengwang.github.io/">Ruisheng Wang<sup>*</sup></a><span>·</span> <a href="https://yjlcv.github.io/">Yujun Liu<sup>*</sup></a></p>
+    <p class="affiliation">School of Architecture and Urban Planning, Shenzhen University</p>
+    <p class="author-note">† Equal contribution &nbsp;&nbsp; * Corresponding authors</p>
+    <div class="resource-links">
+      <a class="button primary" href="assets/PCFootprint.pdf" target="_blank" rel="noopener">↗ Read the paper</a>
+      <a class="button" href="https://huggingface.co/datasets/Haoyuan-Shen/PCFootprint" target="_blank" rel="noopener">↓ Get the dataset</a>
+    </div>
+    <p class="publication"><a href="https://ieeexplore.ieee.org/document/11618896/">IEEE JSTARS 19, 26525–26539</a> · DOI: 10.1109/JSTARS.2026.3715686</p>
+  </header>
+  <main>
+    <section class="overview" aria-label="Dataset overview">
+      <figure>
+        <a href="assets/overview.png" target="_blank" rel="noopener" aria-label="Open full-resolution dataset overview"><img src="assets/overview.png" width="1530" height="1309" alt="Maps of Estonia showing building density, dataset tile distribution, regional building counts, and LiDAR scenes with footprint annotations." fetchpriority="high"></a>
+        <figcaption>From real aerial LiDAR to vectorized building footprints.<br>Geographic coverage and representative scenes across Estonia. Click the figure to explore it at full resolution.</figcaption>
+      </figure>
+    </section>
+    <div class="metrics" aria-label="Dataset statistics">
+      <div><strong>33,000</strong><span>Point cloud tiles</span></div><div><strong>227,264</strong><span>Building instances</span></div><div><strong>540.67 <small>km²</small></strong><span>Geographic coverage</span></div><div><strong>3,000</strong><span>Cross-domain test tiles</span></div>
+    </div>
+    <section id="abstract" class="section prose">
+      <p class="eyebrow">01 / The research</p><h2>Abstract</h2>
+      <p>Building footprint extraction is a fundamental task in photogrammetry, remote sensing, and computer vision. Recent image-based methods have achieved remarkable progress in extracting vectorized footprints from high-resolution optical imagery. However, optical imagery is inherently susceptible to occlusions, perspective distortions, and residual relief displacement, yielding incomplete or misaligned extractions. Furthermore, the lack of explicit elevation information limits its direct applicability to level of detail building modeling.</p>
+      <p>To overcome these fundamental limitations, we present <strong>PCFootprint</strong>, the first large-scale public dataset dedicated to building footprint extraction from real aerial laser scanning point clouds. Significantly surpassing existing LiDAR-based datasets in scale, PCFootprint comprises <strong>33,000 tiles</strong> featuring systematically aligned vectorized annotations across diverse urban and rural landscapes. Furthermore, in order to push the robustness of future algorithms, we construct a unique <strong>3,000-tile cross-domain benchmark</strong> to evaluate model generalization across unseen geographic regions.</p>
+      <p>Comprehensive evaluations of mainstream methods reveal critical unresolved challenges in the 3-D domain, including high intraclass variance, severe data imbalance, and noise in complex geospatial environments. As a comprehensive public benchmark, we believe PCFootprint will facilitate future research in 3-D building modeling, urban scene understanding, and geospatial analysis.</p>
+    </section>
+    <section id="dataset" class="section">
+      <p class="eyebrow">02 / The dataset</p><h2>Real geometry. Diverse landscapes.</h2>
+      <p class="intro">Airborne laser scanning point clouds paired with aligned vectorized building footprints, spanning urban and rural environments in Estonia.</p>
+      <div class="dataset-grid">
+        <div>
+          <h3>A benchmark built for generalization</h3>
+          <p>The Mainland subset provides 24,000 training, 3,000 validation, and 3,000 test tiles. A geographically distinct Islands subset contains 3,000 test tiles from Saaremaa and Hiiumaa for zero-shot cross-domain evaluation.</p>
+          <dl class="specs"><div><dt>Tile extent</dt><dd>128 × 128 m</dd></div><div><dt>Data</dt><dd>ALS point clouds</dd></div><div><dt>Annotations</dt><dd>Vectorized polygons · MS-COCO format</dd></div><div><dt>Point spacing</dt><dd>0.22–1.09 m</dd></div><div><dt>License</dt><dd>CC BY 4.0</dd></div></dl>
+          <a class="text-link" href="https://huggingface.co/datasets/Haoyuan-Shen/PCFootprint">Explore the dataset on Hugging Face ↗</a>
+        </div>
+        <figure class="split-figure"><a href="assets/splits.png" target="_blank" rel="noopener"><img src="assets/splits.png" width="771" height="774" loading="lazy" alt="County-level tile counts by training, validation, Mainland test and Islands test split."></a><figcaption>Tile distribution by county and dataset split (Figure 9).</figcaption></figure>
+      </div>
+      <div class="download-note"><h3>Download &amp; organization</h3><p>The release contains Mainland and Islands point clouds alongside footprint annotation files. The dataset is distributed as a multipart ZIP archive on Hugging Face; download all parts before extraction. See the dataset card for file details.</p><pre>PCFootprint/
+├── Mainland/
+│   ├── pointcloud/
+│   └── &lt;train|test|val&gt;.json
+└── Islands/
+    ├── pointcloud/
+    └── test.json</pre></div>
+    </section>
+    <section id="benchmark" class="section">
+      <p class="eyebrow">03 / The benchmark</p><h2>Beyond the training region.</h2>
+      <p class="intro">A unified comparison of pixelwise segmentation and polygonal regression methods, evaluated on both Mainland and unseen Islands scenes.</p>
+      <div class="table-wrap" role="region" tabindex="0" aria-label="Benchmark results, horizontally scrollable"><table><caption>Selected results from Table V of the paper. mAP (%); higher is better.</caption><thead><tr><th scope="col">Method</th><th scope="col">Paradigm</th><th scope="col">Mainland</th><th scope="col">Islands (zero-shot)</th></tr></thead><tbody><tr><th scope="row">MFNet</th><td>Pixelwise segmentation</td><td><strong>49.8</strong></td><td>33.2</td></tr><tr><th scope="row">P2PFormer</th><td>Polygonal regression</td><td>46.3</td><td>40.8</td></tr><tr><th scope="row">SAMPolyBuild</th><td>Polygonal regression</td><td>47.6</td><td><strong>44.7</strong></td></tr></tbody></table></div>
+      <p class="finding">Polygonal regression retains sharper boundaries and shows stronger cross-region robustness, while sparse sampling, vegetation occlusion, and complex urban morphology remain challenging.</p>
+      <figure class="result-figure"><a href="assets/results.png" target="_blank" rel="noopener" aria-label="Open full-resolution qualitative results"><img src="assets/results.png" width="1090" height="610" loading="lazy" alt="Qualitative building footprint extraction comparison across Mainland and Islands scenes, including point clouds, ground truth, and method predictions."></a><figcaption>Qualitative comparison from Figure 11. Open the figure for a closer view of footprint boundaries.</figcaption></figure>
+    </section>
+    <section id="citation" class="section">
+      <p class="eyebrow">04 / Cite this work</p><div class="citation-heading"><h2>Citation</h2><button id="copy-citation" class="button" type="button">Copy BibTeX</button></div>
+      <p>If you use PCFootprint in your research, please cite our paper.</p>
+      <pre id="bibtex">@article{shen2026pcfootprint,
+  title   = {PCFootprint: A Large-Scale Dataset and Benchmark for
+             Vectorized Building Footprint Extraction From
+             Aerial LiDAR Point Clouds},
+  author  = {Shen, Haoyuan and Wang, Kuihao and Wang, Ruisheng
+             and Liu, Yujun},
+  journal = {IEEE Journal of Selected Topics in Applied Earth
+             Observations and Remote Sensing},
+  volume  = {19},
+  pages   = {26525--26539},
+  year    = {2026},
+  doi     = {10.1109/JSTARS.2026.3715686}
+}</pre><p id="copy-status" role="status" aria-live="polite"></p>
+    </section>
+    <section class="acknowledgements section"><h2>Acknowledgements</h2><p>We thank the Estonian Land and Spatial Development Board for the open LiDAR and geospatial data used to develop PCFootprint. The paper and dataset are released under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. Figures on this page are reproduced from the paper.</p></section>
+  </main>
+  <footer><a class="wordmark" href="#home">PCFootprint</a><span>Shenzhen University · IEEE JSTARS 2026</span><a href="https://huggingface.co/datasets/Haoyuan-Shen/PCFootprint">Dataset ↗</a></footer>
+</body>
+</html>
