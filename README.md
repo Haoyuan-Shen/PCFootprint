@@ -1,28 +1,61 @@
-# PCFootprint project website
+# PCFootprint
 
-独立静态项目页，无需安装依赖或构建。包含正式论文 PDF、论文图、数据集链接和可复制的 BibTeX。
+**PCFootprint: A Large-Scale Dataset and Benchmark for Vectorized Building Footprint Extraction From Aerial LiDAR Point Clouds**
 
-## 发布到自己的 GitHub Pages
+Haoyuan Shen†, Kuihao Wang†, Ruisheng Wang*, Yujun Liu*
 
-1. 登录你的 GitHub，创建一个 **Public** 仓库，名称为 `PCFootprint`。
-2. 上传本目录的 `index.html`、`styles.css`、`main.js`、`.nojekyll` 和整个 `assets` 目录到仓库根目录。也可解压交付 ZIP 后上传。
-3. 在仓库进入 **Settings → Pages → Build and deployment**。
-4. Source 选择 **Deploy from a branch**，Branch 选择 **main**，目录选择 **/(root)**，点击 Save。
-5. 发布完成后，地址为 `https://你的用户名.github.io/PCFootprint/`，以 Pages 页面显示的实际地址为准。
+School of Architecture and Urban Planning, Shenzhen University
 
-不要把整个 `PCFootprint` 文件夹作为额外的一层上传；`index.html` 应直接位于仓库根目录。
+† Equal contribution. * Corresponding authors.
 
-## 本地预览
+Published in **IEEE Journal of Selected Topics in Applied Earth Observations and Remote Sensing (JSTARS)**, vol. 19, pp. 26525–26539, 2026.
 
-在本目录运行 `python -m http.server 8001 --bind 127.0.0.1`，打开 `http://127.0.0.1:8001/`。
+[Paper](https://doi.org/10.1109/JSTARS.2026.3715686) · [Dataset](https://huggingface.co/datasets/Haoyuan-Shen/PCFootprint)
 
-## 内容维护
+## Overview
 
-- `index.html`：作者、正文、链接、结果和引用。
-- `styles.css`：配色、布局与手机适配。
-- `assets/PCFootprint.pdf`：用户提供的正式论文。
-- `assets/overview.png`、`splits.png`、`results.png`：从论文提取的图。
-- Paper 按钮打开本站 PDF；正式 IEEE 链接在标题信息下方。
+PCFootprint is a large-scale public dataset and benchmark for vectorized building footprint extraction from aerial laser scanning (ALS) point clouds. It provides aligned polygon annotations across diverse urban and rural landscapes in Estonia, together with a geographically distinct test set for evaluating cross-domain generalization.
 
-论文：IEEE JSTARS, vol. 19, pp. 26525–26539, 2026. DOI: 10.1109/JSTARS.2026.3715686。
-图片与论文遵循 CC BY 4.0，原始数据来源见论文和 Hugging Face 数据集说明。
+![PCFootprint dataset overview](assets/overview.png)
+
+## Dataset
+
+| Property | Details |
+| --- | --- |
+| Point cloud tiles | 33,000 |
+| Building instances | 227,264 |
+| Geographic coverage | 540.67 km² |
+| Tile extent | 128 × 128 m |
+| Data type | ALS point clouds |
+| Annotations | Vectorized polygons in MS-COCO format |
+| Point spacing | 0.22–1.09 m |
+
+The **Mainland** subset contains 24,000 training, 3,000 validation, and 3,000 test tiles. The **Islands** subset contains 3,000 geographically distinct test tiles from Saaremaa and Hiiumaa for zero-shot evaluation.
+
+Download the dataset and consult the release details on [Hugging Face](https://huggingface.co/datasets/Haoyuan-Shen/PCFootprint). This repository contains the project website and accompanying paper figures.
+
+## Citation
+
+If you use PCFootprint in your research, please cite:
+
+```bibtex
+@article{shen2026pcfootprint,
+  title   = {PCFootprint: A Large-Scale Dataset and Benchmark for
+             Vectorized Building Footprint Extraction From
+             Aerial LiDAR Point Clouds},
+  author  = {Shen, Haoyuan and Wang, Kuihao and Wang, Ruisheng
+             and Liu, Yujun},
+  journal = {IEEE Journal of Selected Topics in Applied Earth
+             Observations and Remote Sensing},
+  volume  = {19},
+  pages   = {26525--26539},
+  year    = {2026},
+  doi     = {10.1109/JSTARS.2026.3715686}
+}
+```
+
+## License and Acknowledgements
+
+The paper and dataset are licensed under [Creative Commons Attribution 4.0 International (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/). Figures in this repository are reproduced from the paper.
+
+We thank the Estonian Land and Spatial Development Board for the open LiDAR and geospatial data used to develop PCFootprint. See the dataset card for original data attribution and licensing details.
